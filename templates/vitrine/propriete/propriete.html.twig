@@ -4,4 +4,27 @@
     <div class="bg-light rounded text-center">
         <h1 class="h1">Voir tout nos biens</h1>
     </div>
+    <div class="container">
+        <h5 class="h5">Tout nos bien</h5>
+        <div class="row flex">
+            {% for propriete in proprietes %}
+            <div class="col-3 mb-3">
+                <div class="card h-100">
+                    <div class="card-boby">
+                        <h5 class="card-title">
+                            {{propriete.titre}}
+                        </h5>
+                        <p class="card-text">
+                            ville: {{propriete.ville}}
+                        </p>
+                        <p class="card-text">
+                            code postal : {{propriete.codePostal}}
+                        </p>
+                        <div class="text-primary"> prix : {{propriete.prixFormatter}} FCFA</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
