@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProprieteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Cocur\Slugify\Slugify;
 
 /**
  * @ORM\Entity(repositoryClass=ProprieteRepository::class)
@@ -35,7 +36,7 @@ class Propriete
     /**
      * @ORM\Column(type="integer")
      */
-    private $chambre;
+    private $piece;
 
     /**
      * @ORM\Column(type="integer")
@@ -118,14 +119,14 @@ class Propriete
         return $this;
     }
 
-    public function getChambre(): ?int
+    public function getPiece(): ?int
     {
-        return $this->chambre;
+        return $this->piece;
     }
 
-    public function setChambre(int $chambre): self
+    public function setPiece(int $piece): self
     {
-        $this->chambre = $chambre;
+        $this->piece = $piece;
 
         return $this;
     }
@@ -229,5 +230,11 @@ class Propriete
     public function getPrixFormatter()
     {
         return number_format($this->prix,0,'.', '.');
+    }
+
+    public function getSlug() : string
+    {
+        $slugify = new Slugify(); 
+        return $slugify->slugify($this->getTitre());  
     }
 }

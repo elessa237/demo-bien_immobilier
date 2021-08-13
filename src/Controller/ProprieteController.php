@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Propriete;
 use App\Repository\ProprieteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,8 +16,18 @@ class ProprieteController extends AbstractController
     public function index(ProprieteRepository $proprieteRepository): Response
     {
         return $this->render('vitrine/propriete/propriete.html.twig', [
-            'current'=>'propriete',
-            'proprietes'=>$proprieteRepository->All(),
+            'current' => 'propriete',
+            'proprietes' => $proprieteRepository->All(),
+        ]);
+    }
+
+    /**
+     * @Route("/propriete/{slug}-{id}", name="propriete_show")
+     */
+    public function show(Propriete $propriete): Response
+    {
+        return $this->render('vitrine/propriete/show.html.twig', [
+            'propriete' => $propriete,
         ]);
     }
 }
