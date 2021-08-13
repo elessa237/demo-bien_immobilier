@@ -14,7 +14,7 @@ class AppFixtures extends Fixture
         for ($i=0; $i < 10; $i++) {
             $propriete = new Propriete();
             $propriete->setAdresse($faker->address())
-                ->setChambre($faker->numberBetween(2,5))
+                ->setPiece($faker->numberBetween(2,5))
                 ->setChauffage($faker->randomElement(['oui', 'non']))
                 ->setCodePostal($faker->postcode())
                 ->setDescription($faker->sentence(15))
