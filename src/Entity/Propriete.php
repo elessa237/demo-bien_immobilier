@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\ProprieteRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=ProprieteRepository::class)
  */
@@ -30,21 +30,25 @@ class Propriete
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=100, max=400, minMessage="La surface doit etre superieur à 100m²", maxMessage="La surface doit etre inferieur à 400m²")
      */
     private $surface;
 
     /**
      * @ORM\Column(type="integer")
+     * 
      */
     private $piece;
 
     /**
      * @ORM\Column(type="integer")
+     * 
      */
     private $etage;
 
     /**
      * @ORM\Column(type="integer")
+     * 
      */
     private $prix;
 

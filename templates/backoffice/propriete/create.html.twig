@@ -9,24 +9,26 @@
         {{form_start(form)}}
         <div class="row form-group">
             <div class="col-8">
-                {{form_row(form.titre)}}
-                <div class="row">
+                <div class="row mb-3">
+                    {{form_row(form.titre)}}
+                </div>
+                <div class="row mb-3">
                     <div class="col-4">{{form_row(form.surface)}}</div>
                     <div class="col-4">{{form_row(form.piece)}}</div>
                     <div class="col-4">{{form_row(form.etage)}}</div>
                 </div>
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-4">{{form_row(form.prix)}}</div>
                     <div class="col-4">{{form_row(form.chauffage)}}</div>
                     <div class="col-4">{{form_row(form.ville)}}</div>
                 </div>
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-6">{{form_row(form.adresse)}}</div>
                     <div class="col-4">{{form_row(form.codePostal)}}</div>
                     <div class="col-2">{{form_row(form.vendu)}}</div>
                 </div>
-                <div class="row mt-3">
-                    <div class="offset-10 col-2">
+                <div class="row mb-3">
+                    <div>
                         <button type="submit" class="btn btn-success">Enregistrer</button>
                     </div>
                 </div>

@@ -3,7 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Propriete;
+use Doctrine\Common\Collections\Expr\Value;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -55,11 +57,12 @@ class ProprieteType extends AbstractType
                     ],
                 ]
             )
-            ->add('chauffage',null,
+            ->add('chauffage',ChoiceType::class,
                 [
                     'attr' => [
                         'class' => 'form-control'
                     ],
+                    'choices'=>$this->getChoix(),
                 ]
             )
             ->add('ville',null,
@@ -86,7 +89,7 @@ class ProprieteType extends AbstractType
             ->add('vendu',null,
                 [
                     'attr' => [
-                        'class' => 'form-check'
+                        'class' => 'form-checkbox'
                     ],
                 ]
             );
@@ -97,5 +100,15 @@ class ProprieteType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Propriete::class,
         ]);
+    }
+
+    public function getChoix()
+    {
+        $choix = ["oui","non"];
+        $output =[];
+        foreach ($choix as $key => $value) {
+            $output[$value] = $key;
+        }
+        return $output;
     }
 }
