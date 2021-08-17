@@ -1,61 +1,83 @@
-{% extends "vitrine/base/base.html.twig" %}
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Back office{% endblock %}</title>
+    {% block stylesheets %}
+    {{ encore_entry_link_tags('admin') }}
+    {% endblock %}
+</head>
+</html>
+<body>
 {% block body %}
-
-<div class="login-page" style="min-height: 496.391px;">
-    <div class="login-box">
-        <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Connectez-vous pour demarrer votre session</p>
-
-                <form action="{{path('login')}}" method="post">
-                    {% if error %}
+    <div class="login-page" style="min-height: 496.391px;">
+        <div class="login-box">
+            <div class="login-logo">
+                <a href="{{path("home")}}" class="nav-link"><b>Lorem</b>IPSUM</a>
+            </div>
+            <!-- /.login-logo -->
+            <div class="card">
+                <div class="card-body login-card-body">
+                    {% if app.user %}
+                    <p class="login-box-msg">Vous êtes connecté en tant que {{app.user.username}} <a href="{{path("logout")}}"  class="nav-link">Deconnexion</a></p>
+                    {% else %}
+                    <p class="login-box-msg">Connectez-vous pour demarrer votre session</p>
+                    {% endif %}
+    
+                    <form action="{{path('login')}}" method="post">
+                        {% if error %}
                         <div class="alert alert-danger">
                             identifiant invalide
                         </div>
-                    {% endif %}
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Nom d'utilisateur" name="_username" value="{{last_username}}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
+                        {% endif %}
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Nom d'utilisateur" name="_username"
+                                value="{{last_username}}">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" name="_password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" placeholder="Password" name="_password">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <!-- <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div> -->
+                        <div class="row">
+                            <div class="col-6">
+                                <!-- <div class="icheck-primary">
+                                    <input type="checkbox" id="remember">
+                                    <label for="remember">
+                                        Remember Me
+                                    </label>
+                                </div> -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary btn-block">Connexion</button>
+                            </div>
+                            <!-- /.col -->
                         </div>
-                        <!-- /.col -->
-                        <div class="col-6">
-                            <button type="submit" class="btn btn-primary btn-block">Connexion</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-                <!-- /.social-auth-links -->
-                <p class="mb-0">
-                    <a href="register.html" class="text-center">Creer un nouveau compte</a>
-                </p>
+                    </form>
+                    <!-- /.social-auth-links -->
+                    <p class="mb-0">
+                        <a href="register.html" class="text-center">Creer un nouveau compte</a>
+                    </p>
+                </div>
+                <!-- /.login-card-body -->
             </div>
-            <!-- /.login-card-body -->
         </div>
+        <!-- /.login-box -->
     </div>
-    <!-- /.login-box -->
-</div>
+{% endblock %}
+</body>
+</html>
 
+{% block javascripts %}
+{{ encore_entry_script_tags('admin') }}
 {% endblock %}

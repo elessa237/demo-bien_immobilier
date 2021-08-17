@@ -66,7 +66,7 @@ class AdminProprieteController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="delete")
+     * @Route("/{id}/delete", name="delete")
      */
     public function delete(
         Propriete $propriete,
