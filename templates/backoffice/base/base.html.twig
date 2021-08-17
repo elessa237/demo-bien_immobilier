@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Back office{% endblock %}</title>
         {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('admin') }}
         {% endblock %}
     </head>
     {% include "backoffice/base/includes/_navbar.html.twig" %}
@@ -17,5 +17,5 @@
 </html>
 
 {% block javascripts %}
-{{ encore_entry_script_tags('app') }}
+{{ encore_entry_script_tags('admin') }}
 {% endblock %}

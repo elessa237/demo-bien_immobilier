@@ -15,6 +15,7 @@
         <div class="col-lg-3 col-6 mt-3">
             <div class="card h-100">
                 <div class="card-boby">
+                    <img src="{{ vich_uploader_asset(propriete, 'imageFile')}}" class="card-img-top img" alt="...">
                     <h5 class="card-title">
                         <a href="{{path('propriete_show', {slug:propriete.slug, id:propriete.id})}}">{{propriete.titre}}</a>
                     </h5>
