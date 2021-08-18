@@ -1,33 +1,49 @@
 {% extends "backoffice/base/base.html.twig" %}
 
 {% block body %}
-    <div class="bg-light mb-3">
-        <h1 class="text-center">Gestion des propriétés</h1>
-    </div>
-    <a href="{{path('create')}}" class="btn btn-success float-end mb-3 me-3">Creer un bien</a>
-    <div class="container">
-        <table class="table table-dark table-striped">
-            <thead>
-                <tr>
-                    <th scope="col" class="text-center">Titre</th>
-                    <th scope="col" class="text-center">Description</th>
-                    <th scope="col" class="text-center">Prix</th>
-                    <th scope="col" class="text-center">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for propriete in proprietes %}   
-                <tr>
-                    <td class="text-center">{{propriete.titre}}</td>
-                    <td class="text-center">{{propriete.Description | u.truncate(70,'...',false)}}</td>
-                    <td class="text-center">{{propriete.prixFormatter}} Fcfa</td>
-                    <td class="text-center">
-                        <a class="btn btn-primary" href="{{path("show", {id: propriete.id})}}">voir</a>
-                        <a class="btn btn-secondary" href="{{path("edit", {id: propriete.id})}}">Editer</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-{% endblock %}
+<div class="content-wrapper" style="min-height: 1761.5px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <h1>
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Toutes les proprietes</font>
+                    </font>
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <a href="{{path('create')}}" class="btn btn-success float-end mb-3 me-3">Creer un bien</a>
+            <div class="container">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-center">Titre</th>
+                            <th scope="col" class="text-center">Description</th>
+                            <th scope="col" class="text-center">Prix</th>
+                            <th scope="col" class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for propriete in proprietes %}
+                        <tr>
+                            <td class="text-center">{{propriete.titre}}</td>
+                            <td class="text-center">{{propriete.Description | u.truncate(70,'...',false)}}</td>
+                            <td class="text-center">{{propriete.prixFormatter}} Fcfa</td>
+                            <td class="text-center">
+                                <a class="btn btn-primary" href="{{path("show", {id: propriete.id})}}">voir</a>
+                                <a class="btn btn-secondary" href="{{path("edit", {id: propriete.id})}}">Editer</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    {% endblock %}

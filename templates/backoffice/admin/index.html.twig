@@ -1,5 +1,105 @@
 {% extends "backoffice/base/base.html.twig" %}
 
 {% block body %}
+    <div class="content-wrapper" style="min-height: 1761.5px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Barre latérale réduite</font>
+                            </font>
+                        </h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Domicile</font>
+                                    </font>
+                                </a></li>
+                            <li class="breadcrumb-item"><a href="#">
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Disposition</font>
+                                    </font>
+                                </a></li>
+                            <li class="breadcrumb-item active">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Barre latérale réduite</font>
+                                </font>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
     
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">{{proprietes|length}}</font>
+                                    </font>
+                                </h3>
+    
+                                <p>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Propriété{% if proprietes|length>1 %}s{%
+                                            endif %}</font>
+                                    </font>
+                                </p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-home"></i>
+                            </div>
+                            <a href="{{path("admin_propriete")}}" class="small-box-footer">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Plus d'informations </font>
+                                </font><i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">{{users|length}}</font>
+                                    </font>
+                                </h3>
+    
+                                <p>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">Utilisateur{% if users|length>1 %}s{% endif
+                                            %}</font>
+                                    </font>
+                                </p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Plus d'informations </font>
+                                </font><i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
 {% endblock %}
+

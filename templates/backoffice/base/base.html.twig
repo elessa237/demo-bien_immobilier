@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="translated-ltr">
 
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Back office{% endblock %}</title>
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         {% block stylesheets %}
         {{ encore_entry_link_tags('admin') }}
         {% endblock %}
     </head>
-    {% include "backoffice/base/includes/_navbar.html.twig" %}
 
-    <body>
-        {% block body %}{% endblock %}
+    <body class="sidebar-mini layout-fixed sidebar-closed sidebar-collapse" , style="height: auto;">
+        {% include "backoffice/base/includes/_slidebar.html.twig" %}
+        {% block body %}
+
+        {% endblock %}
     </body>
 
 </html>
