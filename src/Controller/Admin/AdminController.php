@@ -13,12 +13,15 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin", name="admin")
      */
-    public function index(ProprieteRepository $proprieteRepository, UserRepository $userRepository): Response
-    {
+    public function index(
+        ProprieteRepository $proprieteRepository,
+        UserRepository $userRepository
+    ): Response {
         return $this->render('backoffice/admin/index.html.twig', [
-            'current'=>'acceuil',
-            'proprietes'=>$proprieteRepository->findAll(),
-            'users'=>$userRepository->findAll(),
+            'current' => 'acceuil',
+            'proprietes' => $proprieteRepository->All(),
+            'users' => $userRepository->findAll(),
+            'proprieteVendu'=>$proprieteRepository->Vendu(),
         ]);
     }
 }

@@ -1,84 +1,166 @@
 {% extends "backoffice/base/base.html.twig" %}
 
 {% block body %}
-    <div class="content-wrapper" style="min-height: 1761.5px;">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                        <h1>
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">Bienvenue dans l'administration'</font>
-                            </font>
-                        </h1>
-                </div>
+<div class="content-wrapper" style="min-height: 1761.5px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <h1>
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Bienvenue dans l'administration'</font>
+                    </font>
+                </h1>
             </div>
-        </section>
-    
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>
-                                    <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">{{proprietes|length}}</font>
-                                    </font>
-                                </h3>
-    
-                                <p>
-                                    <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">Propriété{% if proprietes|length>1 %}s{%
-                                            endif %}</font>
-                                    </font>
-                                </p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-home"></i>
-                            </div>
-                            <a href="{{path("admin_propriete")}}" class="small-box-footer">
-                                <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Plus d'informations </font>
-                                </font><i class="fas fa-arrow-circle-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>
-                                    <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">{{users|length}}</font>
-                                    </font>
-                                </h3>
-    
-                                <p>
-                                    <font style="vertical-align: inherit;">
-                                        <font style="vertical-align: inherit;">Utilisateur{% if users|length>1 %}s{% endif
-                                            %}</font>
-                                    </font>
-                                </p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-person-add"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">
-                                <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Plus d'informations </font>
-                                </font><i class="fas fa-arrow-circle-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                </div>
-            </div>
-        </section>
-        <!-- /.content -->
-    </div>
-{% endblock %}
+        </div>
+    </section>
 
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">{{proprietes|length}}</font>
+                                </font>
+                            </h3>
+
+                            <p>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Propriété{% if proprietes|length >1 %}s{%
+                                        endif %}</font>
+                                </font>
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-home"></i>
+                        </div>
+                        <a href="{{path('admin_propriete')}}" class="small-box-footer">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Plus d'informations </font>
+                            </font><i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">{{users|length}}</font>
+                                </font>
+                            </h3>
+
+                            <p>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">Utilisateur{% if users|length >1 %}s{% endif %}</font>
+                                </font>
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">Plus d'informations </font>
+                            </font><i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Propriété Vendu</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0" style="display: block;">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 20%">
+                                Titre
+                            </th>
+                            <th style="width: 30%">
+                                Description
+                            </th>
+                            <th>
+                                prix
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                vendu
+                            </th>
+                            <th style="width: 20%" class="text-center">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for propriete in proprieteVendu %}
+                        <tr>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                <a>
+                                    {{propriete.titre}}
+                                </a>
+                                <br>
+                                <small>
+                                    crée le : {{propriete.createdAt|date("d/m/Y")}}
+                                </small>
+                            </td>
+                            <td>
+                                {{propriete.Description | u.truncate(70,'...',false)}}
+                            </td>
+                            <td class="project_progress">
+                                {{propriete.prixFormatter}} Fcfa
+                            </td>
+                            <td class="project-state">
+                                <span class="badge badge-success">Vendu</span>
+                            </td>
+                            <td class="project-actions text-center">
+                                <a class="btn btn-primary btn-sm" href="{{path('show', {id: propriete.id})}}">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    Voir
+                                </a>
+                                <a class="btn btn-danger btn-sm" href="{{path('delete',{id:propriete.id})}}">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Supp
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+</div>
+{% endblock %}

@@ -43,6 +43,18 @@ class ProprieteRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * @return Propriete[]
+     */
+    public function Vendu()
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.vendu = true')
+            ->orderBy('p.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
 
     // /**
     //  * @return Propriete[] Returns an array of Propriete objects
