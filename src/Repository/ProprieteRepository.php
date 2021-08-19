@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Propriete;
+use App\Entity\ProprieteSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -33,13 +34,23 @@ class ProprieteRepository extends ServiceEntityRepository
     }
 
     /**
-    * @return Propriete[]
-    */
-    public function All()
+     * @return Propriete[]
+     */
+    public function All(ProprieteSearch $search)
     {
-        return $this->createQueryBuilder('p')
-            ->orderBy('p.createdAt', 'DESC')
-            ->getQuery()
+        $query =  $this->createQueryBuilder('p')
+            ->orderBy('p.createdAt', 'DESC');
+        if ($search->getPrixMax()) {
+            $query = $query->andWhere('p.prix <= :prixMax')
+                ->setParameter('prixMax', $search->getPrixMax());
+        }
+
+        if ($search->getSurfaceMax()) {
+            $query = $query->andWhere('p.surface <= :surfaceMax')
+                ->setParameter('surfaceMax', $search->getSurfaceMax());
+        }
+
+        return $query = $query->getQuery()
             ->getResult();
     }
 

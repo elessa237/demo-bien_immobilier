@@ -1,29 +1,46 @@
 {% extends "vitrine/base/base.html.twig" %}
 
 {% block body %}
-    <div class="bg-light rounded text-center">
-        <h1 class="h1">Tout nos biens</h1>
+<div class="bg-light rounded text-center">
+    <div class="container mt-2">
+        {{form_start(form)}}
+        <div class="form-group">
+            <div class="row  mb-3">
+                <div class="col-5">{{form_widget(form.prixMax)}}</div>
+                <div class="col-5">{{form_widget(form.surfaceMax)}}</div>
+                <div class="col-2"><button type="submit" class="btn btn-primary">rechercher</button></div>
+            </div>
+        </div>
+        {{form_end(form)}}
     </div>
-    <div class="container">
-        <div class="row flex">
-            {% for propriete in proprietes %}
-            <div class="col-lg-3 col-6 mb-3">
-                <div class="card h-100">
-                    <div class="card-boby">
-                        <h5 class="card-title">
-                            <a href="{{path('propriete_show', {slug:propriete.slug, id:propriete.id})}}">{{propriete.titre}}</a>
-                        </h5>
-                        <p class="card-text">
-                            ville: {{propriete.ville}}
-                        </p>
-                        <p class="card-text">
-                            code postal : {{propriete.codePostal}}
-                        </p>
-                        <div class="text-primary"> prix : {{propriete.prixFormatter}} FCFA</div>
-                    </div>
+</div>
+
+<h1 class="h1">Tout nos biens</h1>
+
+<div class="container">
+    <div class="row flex">
+        {% for propriete in proprietes %}
+        <div class="col-lg-3 col-6 mb-3">
+            <div class="card h-100">
+                <div class="card-boby">
+                    <h5 class="card-title">
+                        <a
+                            href="{{path('propriete_show', {slug:propriete.slug, id:propriete.id})}}">{{propriete.titre}}</a>
+                    </h5>
+                    <p class="card-text">
+                        ville: {{propriete.ville}}
+                    </p>
+                    <p class="card-text">
+                        code postal : {{propriete.codePostal}}
+                    </p>
+                    <p class="card-text">
+                        surface : {{propriete.surface}}m²
+                    </p>
+                    <div class="text-primary"> prix : {{propriete.prixFormatter}} FCFA</div>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
+</div>
 {% endblock %}
