@@ -25,7 +25,7 @@ class ProprieteController extends AbstractController
 
         return $this->render('vitrine/propriete/propriete.html.twig', [
             'current' => 'propriete',
-            'proprietes' => $proprieteRepository->All($search),
+            'proprietes' => $proprieteRepository->recherche($search),
             'form' => $form->createView(),
         ]);
     }

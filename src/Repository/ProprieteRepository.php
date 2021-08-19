@@ -36,7 +36,7 @@ class ProprieteRepository extends ServiceEntityRepository
     /**
      * @return Propriete[]
      */
-    public function All(ProprieteSearch $search)
+    public function recherche(ProprieteSearch $search)
     {
         $query =  $this->createQueryBuilder('p')
             ->orderBy('p.createdAt', 'DESC');
@@ -66,6 +66,13 @@ class ProprieteRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function All()
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 
     // /**
     //  * @return Propriete[] Returns an array of Propriete objects
