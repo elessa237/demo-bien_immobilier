@@ -21,12 +21,13 @@ class AppFixtures extends Fixture
         $user = new User();
         $password = $this->hasher->hashPassword($user, 'demo');
         $user->setUsername("demo")
+            ->setRoles(["ROLE_ADMIN"])
             ->setPassword($password);
 
         $manager->persist($user);
 
         $faker = \Faker\Factory::create('fr_FR');
-        for ($i=0; $i < 10; $i++) {
+        for ($i=0; $i < 40; $i++) {
             $propriete = new Propriete();
             $propriete->setAdresse($faker->address())
                 ->setPiece($faker->numberBetween(2,5))

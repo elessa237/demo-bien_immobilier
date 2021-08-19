@@ -31,7 +31,8 @@
 
                             <p>
                                 <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Propriété{% if proprietes|length >1 %}s{% endif %}</font>
+                                    <font style="vertical-align: inherit;">Propriété{% if proprietes|length >1 %}s{%
+                                        endif %}</font>
                                 </font>
                             </p>
                         </div>
@@ -58,7 +59,8 @@
 
                             <p>
                                 <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">Utilisateur{% if users|length >1 %}s{% endif %}</font>
+                                    <font style="vertical-align: inherit;">Utilisateur{% if users|length >1 %}s{% endif
+                                        %}</font>
                                 </font>
                             </p>
                         </div>
@@ -116,7 +118,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for propriete in proprieteVendu %}
+                        {% for propriete in proprietesVendu %}
                         <tr>
                             <td>
                                 #
@@ -157,6 +159,12 @@
                 </table>
             </div>
             <!-- /.card-body -->
+            <div class="card-footer clearfix">
+                <div class="pagination pagination-sm float-right mt-1">
+                    {% do proprietesVendu.setPageRange(4) %}
+                    {{ knp_pagination_render(proprietesVendu, 'vitrine/base/include/pagination.html.twig') }}
+                </div>
+            </div>
         </div>
         <!-- /.card -->
 

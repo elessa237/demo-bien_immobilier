@@ -7,6 +7,7 @@ use App\Form\ProprieteType;
 use App\Repository\ProprieteRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,12 +21,19 @@ class AdminProprieteController extends AbstractController
     /**
      * @Route("/", name="admin_propriete")
      */
-    public function index(ProprieteRepository $proprieteRepository): Response
-    {
-
+    public function index(
+        ProprieteRepository $proprieteRepository,
+        PaginatorInterface $pagination,
+        Request $request
+    ): Response {
+        $proprietes = $pagination->paginate(
+            $proprieteRepository->All(),
+            $request->query->getInt('page', 1),
+            7
+        );
         return $this->render('backoffice/propriete/propriete.html.twig', [
             'current' => 'propriete',
-            'proprietes' => $proprieteRepository->All(),
+            'proprietes' => $proprietes,
 
         ]);
     }
