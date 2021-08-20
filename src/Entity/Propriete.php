@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProprieteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -81,6 +83,16 @@ class Propriete
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Options::class, inversedBy="propriete")
+     */
+    private $options;
+
+    public function __construct()
+    {
+        $this->options = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -240,5 +252,32 @@ class Propriete
     {
         $slugify = new Slugify(); 
         return $slugify->slugify($this->getTitre());  
+    }
+
+    /**
+     * @return Collection|Options[]
+     */
+    public function getOptions(): Collection
+    {
+        return $this->options;
+    }
+
+    public function addOption(Options $option): self
+    {
+        if (!$this->options->contains($option)) {
+            $this->options[] = $option;
+            $option->addPropriete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOption(Options $option): self
+    {
+        if ($this->options->removeElement($option)) {
+            $option->removePropriete($this);
+        }
+
+        return $this;
     }
 }

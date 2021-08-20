@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Options;
 use App\Entity\Propriete;
 use Doctrine\Common\Collections\Expr\Value;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -92,8 +94,20 @@ class ProprieteType extends AbstractType
                         'class' => 'form-checkbox'
                     ],
                 ]
+            )
+            ->add('options',EntityType::class,
+                [
+                    'class'=>Options::class,
+                    'choice_label'=>'name',
+                    'multiple'=>true,
+                    'attr' => [
+                        'class' => 'form-control'
+                    ],
+                ]
             );
+
     }
+
 
     public function configureOptions(OptionsResolver $resolver)
     {
