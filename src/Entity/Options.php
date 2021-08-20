@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\OptionsRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Propriete;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\OptionsRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=OptionsRepository::class)
@@ -52,14 +53,14 @@ class Options
     }
 
     /**
-     * @return Collection|propriete[]
+     * @return Collection|Propriete[]
      */
     public function getPropriete(): Collection
     {
         return $this->propriete;
     }
 
-    public function addPropriete(propriete $propriete): self
+    public function addPropriete(Propriete $propriete): self
     {
         if (!$this->propriete->contains($propriete)) {
             $this->propriete[] = $propriete;
@@ -68,7 +69,7 @@ class Options
         return $this;
     }
 
-    public function removePropriete(propriete $propriete): self
+    public function removePropriete(Propriete $propriete): self
     {
         $this->propriete->removeElement($propriete);
 

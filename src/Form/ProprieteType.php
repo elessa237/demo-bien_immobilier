@@ -98,7 +98,7 @@ class ProprieteType extends AbstractType
             ->add('options',EntityType::class,
                 [
                     'class'=>Options::class,
-                    'choice_label'=>'name',
+                    'choice_label'=>'nom',
                     'multiple'=>true,
                     'attr' => [
                         'class' => 'form-control'

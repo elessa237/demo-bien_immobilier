@@ -2,12 +2,12 @@
     <ul class="pagination">
         {% if previous is defined %}
                  <li class="page-item">
-                     <a class="page-link" rel="prev" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">{{ 'precedent'|trans({}, 'KnpPaginatorBundle') }}</a>
+                     <a class="page-link" rel="prev" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">precedent</a>
                  </li>
         {% else %}
             <li class="page-item disabled">
                 <a class="page-link">
-                    {{ 'precedent'|trans({}, 'KnpPaginatorBundle') }}
+                    precedent
                 </a>
             </li>
         {% endif %}
@@ -64,13 +64,13 @@
         {% if next is defined %}
             <li class="page-item">
                 <a class="page-link" rel="next" href="{{ path(route, query|merge({(pageParameterName): next})) }}">
-                    {{ 'suivant'|trans({}, 'KnpPaginatorBundle') }}
+                    suivant
                 </a>
             </li>
         {% else %}
             <li class="page-item disabled">
                 <a class="page-link">
-                    {{ 'suivant'|trans({}, 'KnpPaginatorBundle') }}
+                    suivant
                 </a>
             </li>
         {% endif %}

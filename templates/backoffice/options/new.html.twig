@@ -1,0 +1,26 @@
+{% extends "backoffice/base/base.html.twig" %}
+
+{% block body %}
+<div class="content-wrapper" style="min-height: 1761.5px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <h1>
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Ajouter une nouvelle option</font>
+                    </font>
+                </h1>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="container">
+                {{ include('backoffice/options/_form.html.twig') }}
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

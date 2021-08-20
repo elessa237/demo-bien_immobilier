@@ -45,7 +45,7 @@
                                 <!-- Add icons to the links using the .nav-icon class
                            with font-awesome or any other icon font library -->
                                 <li class="nav-item">
-                                    <a href="{{path("admin")}}" class="nav-link">
+                                    <a href="{{path('admin')}}" class="nav-link">
                                         <i class="nav-icon fas fa-th"></i>
                                         <p>
                                             <font style="vertical-align: inherit;">
@@ -57,43 +57,78 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a href="{{path("admin_propriete")}}" class="nav-link">
+                                <li class="nav-item menu">
+                                    <a href="#" class="nav-link">
                                         <i class="nav-icon fas fa-th"></i>
                                         <p>
                                             <font style="vertical-align: inherit;">
                                                 <font style="vertical-align: inherit;">
-                                                    Propriete
-                                                </font>
-                                            </font>
-                                        </p>
-                                    </a>
-                                </li>
-                                <!-- <li class="nav-item menu-open">
-                                    <a href="#" class="nav-link active">
-                                        <i class="nav-icon fas fa-copy"></i>
-                                        <p>
-                                            <font style="vertical-align: inherit;">
-                                                <font style="vertical-align: inherit;">
-                                                    Options de mise en page
+                                                    Proprietes
                                                 </font>
                                             </font><i class="fas fa-angle-left right"></i>
                                         </p>
                                     </a>
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
-                                            <a href="../layout/top-nav.html" class="nav-link">
+                                            <a href="{{path('admin_propriete')}}" class="nav-link">
                                                 <i class="far fa-circle nav-icon"></i>
                                                 <p>
                                                     <font style="vertical-align: inherit;">
-                                                        <font style="vertical-align: inherit;">Navigation supérieure
+                                                        <font style="vertical-align: inherit;">Tout voir
+                                                        </font>
+                                                    </font>
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{path('create')}}" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Creer une propriete
                                                         </font>
                                                     </font>
                                                 </p>
                                             </a>
                                         </li>
                                     </ul>
-                                </li> -->
+                                </li>
+                                <li class="nav-item menu">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-th"></i>
+                                        <p>
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">
+                                                    Options
+                                                </font>
+                                            </font><i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{path('admin_options_index')}}" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Tout voir
+                                                        </font>
+                                                    </font>
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{path('admin_options_new')}}" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">Creer une option
+                                                        </font>
+                                                    </font>
+                                                </p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </ul>
                         </nav>
                     </div>
