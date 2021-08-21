@@ -1,8 +1,9 @@
 {% extends "vitrine/base/base.html.twig" %}
 
 {% block body %}
-<div class="bg-light rounded text-center">
-    <div class="container mt-2">
+<div class="bg-light rounded">
+    <h4>Ajouter un filtre : </h4>
+    <div class="container">
         {{form_start(form)}}
         <div class="form-group">
             <div class="row  mb-3">
@@ -43,7 +44,6 @@
         {% endfor %}
     </div>
     <div class="d-flex justify-content-center">
-        {% do proprietes.setPageRange(4) %}
         {{ knp_pagination_render(proprietes, 'vitrine/base/include/pagination.html.twig') }}
     </div>
 </div>

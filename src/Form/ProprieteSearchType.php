@@ -33,6 +33,12 @@ class ProprieteSearchType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ProprieteSearch::class,
+            'method' => 'get'
         ]);
+    }
+    
+    public function getBlockPrefix()
+    {
+        return '';
     }
 }

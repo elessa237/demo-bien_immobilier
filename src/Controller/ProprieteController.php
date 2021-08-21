@@ -22,17 +22,14 @@ class ProprieteController extends AbstractController
      PaginatorInterface $pagination
      ): Response
     {
-        $ProprieteSearch= new ProprieteSearch();
+        $search = new ProprieteSearch();
 
-        $form = $this->createForm(ProprieteSearchType::class, $ProprieteSearch);
+        $form = $this->createForm(ProprieteSearchType::class, $search);
         $form->handleRequest($request);
-        $search= $form->getData();
-
-        $ProprieteSearch = $proprieteRepository->recherche($search);
 
         $proprietes = $pagination->paginate(
-            $ProprieteSearch,
-            $request->query->getInt('page',1), 
+            $proprieteRepository->recherche($search),
+            $request->query->getInt('page', 1),
             12
         );
 
