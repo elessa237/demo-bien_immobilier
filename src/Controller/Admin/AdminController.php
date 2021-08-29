@@ -31,6 +31,7 @@ class AdminController extends AbstractController
             'proprietes' => $proprieteRepository->All(),
             'users' => $userRepository->findAll(),
             'proprietesVendu'=>$proprietes,
+            'proprietesList'=>$proprieteRepository->Vendu()
         ]);
     }
 }

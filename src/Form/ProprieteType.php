@@ -63,7 +63,7 @@ class ProprieteType extends AbstractType
             ->add('chauffage',ChoiceType::class,
                 [
                     'attr' => [
-                        'class' => 'form-control'
+                        'class' => 'form-select'
                     ],
                     'choices'=>$this->getChoix(),
                 ]
@@ -104,10 +104,7 @@ class ProprieteType extends AbstractType
                     ],
                 ]
             )
-            ->add(
-                'options',
-                EntityType::class,
-                [
+            ->add('options', EntityType::class, [
                     'class' => Options::class,
                     'required' => false,
                     'multiple' => true,

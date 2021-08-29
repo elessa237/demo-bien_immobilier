@@ -7,7 +7,7 @@
         {% endif %}
         <div class="card-boby px-3">
             <h5 class="card-title">
-                <a href="{{path('propriete_show', {slug:propriete.slug, id:propriete.id})}}">{{propriete.titre}}</a>
+                <a href="{{path('propriete_show', {slug:propriete.slug, id:propriete.id})}}" style="text-decoration: none;">{{propriete.titre}}</a>
             </h5>
             <p class="card-text">
                 {{propriete.surface}}m² - {{propriete.ville}} ({{propriete.codePostal}})

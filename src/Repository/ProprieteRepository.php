@@ -39,7 +39,7 @@ class ProprieteRepository extends ServiceEntityRepository
     public function recherche(ProprieteSearch $search)
     {
         $query =  $this->createQueryBuilder('p')
-            ->where("p.vendu = 0")
+            ->where("p.vendu = false")
             ->orderBy('p.createdAt', 'DESC');
         if ($search->getPrixMax()) {
             $query = $query->andWhere('p.prix <= :prixMax')
