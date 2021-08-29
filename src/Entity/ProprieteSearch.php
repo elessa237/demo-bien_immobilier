@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class ProprieteSearch
 {
     /**
@@ -23,7 +25,15 @@ class ProprieteSearch
     {
         return $this->surfaceMax;
     }
+    /**
+     * @var ArrayCollection
+     */
+    private $options;
 
+    public function __construct()
+    {
+        $this->options = new ArrayCollection();
+    }
     /**
      * Set the value of surfaceMax
      *
@@ -56,5 +66,29 @@ class ProprieteSearch
     public function setPrixMax($prixMax)
     {
         return  $this->prixMax = $prixMax;
+    }
+
+    /**
+     * Get the value of options
+     *
+     * @return  ArrayCollection
+     */
+    public function getOptions() : ArrayCollection
+    {
+        return $this->options;
+    }
+
+    /**
+     * Set the value of options
+     *
+     * @param  ArrayCollection  $options
+     *
+     * @return  self
+     */
+    public function setOptions(ArrayCollection $options)
+    {
+        $this->options = $options;
+
+        return $this;
     }
 }
