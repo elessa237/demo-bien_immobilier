@@ -9,7 +9,10 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
  * @Route("/admin/propriete")
@@ -23,8 +26,7 @@ class AdminProprieteController extends AbstractController
         ProprieteRepository $proprieteRepository,
         PaginatorInterface $pagination,
         Request $request
-    ): Response
-    {
+    ): Response {
         $proprietes = $pagination->paginate(
             $proprieteRepository->All(),
             $request->query->getInt('page', 1),
@@ -52,7 +54,7 @@ class AdminProprieteController extends AbstractController
             $entityManager->persist($propriete);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin_propriete',['id' => $propriete->getId()]);
+            return $this->redirectToRoute('admin_propriete', ['id' => $propriete->getId()]);
         }
 
         return $this->renderForm('backoffice/admin_propriete/new.html.twig', [
@@ -74,12 +76,19 @@ class AdminProprieteController extends AbstractController
     /**
      * @Route("/{id}/edit", name="admin_propriete_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Propriete $propriete): Response
-    {
+    public function edit(
+        Request $request,
+        Propriete $propriete,
+        CacheManager $cacheManager,
+        UploaderHelper $helper
+    ): Response {
         $form = $this->createForm(ProprieteType::class, $propriete);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($propriete->getImageFile() instanceof UploadedFile) {
+                $cacheManager->remove($helper->asset($propriete, 'imageFile'));
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('admin_propriete_index', [], Response::HTTP_SEE_OTHER);
@@ -94,9 +103,14 @@ class AdminProprieteController extends AbstractController
     /**
      * @Route("/{id}", name="admin_propriete_delete", methods={"POST"})
      */
-    public function delete(Request $request, Propriete $propriete): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$propriete->getId(), $request->request->get('_token'))) {
+    public function delete(
+        Request $request,
+        Propriete $propriete,
+        CacheManager $cacheManager,
+        UploaderHelper $helper
+    ): Response {
+        if ($this->isCsrfTokenValid('delete' . $propriete->getId(), $request->request->get('_token'))) {
+            $cacheManager->remove($helper->asset($propriete, 'imageFile'));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($propriete);
             $entityManager->flush();

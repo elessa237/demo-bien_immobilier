@@ -12,23 +12,7 @@
     <h5 class="h5">Nos derniers biens</h5>
     <div class="row flex">
         {% for propriete in proprietes %}
-        <div class="col-lg-3 col-6 mt-3">
-            <div class="card h-100">
-                <div class="card-boby">
-                    {# <img src="{{ vich_uploader_asset(propriete, 'imageFile')}}" class="card-img-top img" alt="..."> #}
-                    <h5 class="card-title">
-                        <a href="{{path('propriete_show', {slug:propriete.slug, id:propriete.id})}}">{{propriete.titre}}</a>
-                    </h5>
-                    <p class="card-text">
-                        ville: {{propriete.ville}}
-                    </p>
-                    <p class="card-text">
-                        code postal : {{propriete.codePostal}}
-                    </p>
-                    <div class="text-primary"> prix : {{propriete.prixFormatter}} FCFA</div>
-                </div>
-            </div>
-        </div>
+            {% include "vitrine/base/include/_propriete.html.twig" %}
         {% endfor %}
     </div>
 </div>

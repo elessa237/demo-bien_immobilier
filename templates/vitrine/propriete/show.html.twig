@@ -2,10 +2,16 @@
 
 {% block body %}
 <div class="bg-light">
-    <div class="container">
+    <div class="container pb-5 pt-5">
         <div class="row">
             <div class="col-md-8">
-    
+                {% if propriete.image %}
+                <img src="{{ vich_uploader_asset(propriete, 'imageFile') | imagine_filter('medium')}}"
+                    class="card-img-top" alt="..." style="width: 100%; height:auto;">
+                {% else %}
+                <img src="{{ 'images/propriete/default.jpg' | imagine_filter('medium')}}" class="card-img-top" alt="..."
+                    style="width: 100%; height:auto;">
+                {% endif %}
             </div>
             <div class="col-md-4">
                 <h1>{{propriete.titre}}</h1>
@@ -14,37 +20,42 @@
                 <a href="#" class="btn btn-primary">Contacter</a>
             </div>
         </div>
-        <p>
-            {{propriete.description|nl2br}}
-        </p>
     </div>
 </div>
 <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-8">
-                <table class="table table-striped">
-                    <tr>
-                        <td class="h1">Caracteristique</td>
-                        <td class="h1">Specificite</td>
-                    </tr>
-                    <tr>
-                        <td>Surface habitable</td>
-                        <td>{{propriete.surface}} m²</td>
-                    </tr>
-                    <tr>
-                        <td>Pièces</td>
-                        <td>{{propriete.piece}}</td>
-                    </tr>
-                    <tr>
-                        <td>Etage</td>
-                        <td>{{propriete.etage}}</td>
-                    </tr>
-                    <tr>
-                        <td>chauffage</td>
-                        <td>{{propriete.chauffage}}</td>
-                    </tr>
-                </table>
-            </div>
+    <p>
+        {{propriete.description|nl2br}}
+    </p>
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Caracteristique</h2>
+            <table class="table table-striped">
+                <tr>
+                    <td>Surface habitable</td>
+                    <td>{{propriete.surface}} m²</td>
+                </tr>
+                <tr>
+                    <td>Pièces</td>
+                    <td>{{propriete.piece}}</td>
+                </tr>
+                <tr>
+                    <td>Etage</td>
+                    <td>{{propriete.etage}}</td>
+                </tr>
+                <tr>
+                    <td>chauffage</td>
+                    <td>{{propriete.chauffage}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col mb-4">
+            <h1>Specificite</h1>
+            <ul class="list-group">
+                {% for option in propriete.options %}
+                    <li class="list-group-item">{{option.nom}}</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
+</div>
 {% endblock %}

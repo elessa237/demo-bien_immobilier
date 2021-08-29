@@ -1,0 +1,18 @@
+<div class="col-lg-3 col-6 mt-3">
+    <div class="card mb-4">
+        {% if propriete.image %}
+        <img src="{{ vich_uploader_asset(propriete, 'imageFile') | imagine_filter('thumb')}}" class="card-img-top" alt="..." style="width: 100%; height:auto;">
+        {% else %}
+        <img src="{{ 'images/propriete/default.jpg' | imagine_filter('thumb')}}" class="card-img-top" alt="..." style="width: 100%; height:auto;">
+        {% endif %}
+        <div class="card-boby px-3">
+            <h5 class="card-title">
+                <a href="{{path('propriete_show', {slug:propriete.slug, id:propriete.id})}}">{{propriete.titre}}</a>
+            </h5>
+            <p class="card-text">
+                {{propriete.surface}}m² - {{propriete.ville}} ({{propriete.codePostal}})
+            </p>
+            <div class="text-primary" style="font-size: 2em;">{{propriete.prixFormatter}} FCFA</div>
+        </div>
+    </div>
+</div>

@@ -35,6 +35,7 @@ class Propriete
     
     /**
      * @var File|null
+     * @Assert\Image(mimeTypes="image/jpeg")
      * @Vich\UploadableField(mapping="propriete_images", fileNameProperty="image")
      */
     private $imageFile;
@@ -109,7 +110,7 @@ class Propriete
     private $options;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
 
