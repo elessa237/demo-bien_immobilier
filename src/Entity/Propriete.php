@@ -2,15 +2,22 @@
 
 namespace App\Entity;
 
+use DateTime;
 use App\Entity\Options;
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProprieteRepository;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File as FileFile;
+
 /**
  * @ORM\Entity(repositoryClass=ProprieteRepository::class)
+ * @Vich\Uploadable()
  */
 class Propriete
 {
@@ -20,6 +27,17 @@ class Propriete
      * @ORM\Column(type="integer")
      */
     private $id;
+    
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+    
+    /**
+     * @var File|null
+     * @Vich\UploadableField(mapping="propriete_images", fileNameProperty="image")
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -89,6 +107,12 @@ class Propriete
      * @ORM\ManyToMany(targetEntity=Options::class, inversedBy="propriete")
      */
     private $options;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+
 
     public function __construct()
     {
@@ -281,4 +305,50 @@ class Propriete
 
         return $this;
     }
+
+    /**
+     * Get the value of imageFile
+     *
+     * @return  File|null
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+        return $this;
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
+     */
+    public function setImageFile(?File $imageFile = null) : Propriete
+    {
+        $this->imageFile = $imageFile;
+        if ($this->imageFile instanceof UploadedFile ) {
+            $this->updatedAt = new \DateTime();
+        }
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\vitrine;
 
 use App\Repository\ProprieteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

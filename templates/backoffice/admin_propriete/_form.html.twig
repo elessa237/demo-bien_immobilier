@@ -1,0 +1,43 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="container">
+            {{form_start(form)}}
+            <div class="row form-group">
+                <div class="col-8">
+                    <div class="row mb-3">
+                        {{form_row(form.titre)}}
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-4">{{form_row(form.surface)}}</div>
+                        <div class="col-4">{{form_row(form.piece)}}</div>
+                        <div class="col-4">{{form_row(form.etage)}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-4">{{form_row(form.prix)}}</div>
+                        <div class="col-4">{{form_row(form.chauffage)}}</div>
+                        <div class="col-4">{{form_row(form.ville)}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">{{form_row(form.adresse)}}</div>
+                        <div class="col-4">{{form_row(form.codePostal)}}</div>
+                        <div class="col-2">{{form_row(form.vendu)}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-6">{{form_row(form.options)}}</div>
+                        <div class="col-6">{{form_row(form.imageFile)}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div>
+                            <button class="btn btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    {{form_row(form.description)}}
+                </div>
+            </div>
+            {{form_end(form)}}
+        </div>
+    </div>
+    </div>
+</section>

@@ -65,14 +65,9 @@
                                     {{propriete.prixFormatter}} Fcfa
                                 </h2>
                             </div>
-                            <a class="btn btn-danger btn-lg btn-flat mt-3" href="{{path('delete',{id:propriete.id})}}">
-                                <i class="fas fa-trash fa-lg mr-2"></i>
-                                <font style="vertical-align: inherit;">
-                                    <font style="vertical-align: inherit;">
-                                        Supprimer cette propriété!
-                                    </font>
-                                </font>
-                            </a>
+                            <div>
+                                 {{ include('backoffice/admin_propriete/_delete_form.html.twig') }}
+                            </div>
                         </div>
                     </div>
                 </div>

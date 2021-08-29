@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\vitrine;
 
 use App\Entity\Propriete;
 use App\Entity\ProprieteSearch;

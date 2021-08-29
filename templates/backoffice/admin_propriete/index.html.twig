@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{path('create')}}" class="btn btn-primary btn-sm">Nouvelle
+                        <li class="breadcrumb-item"><a href="{{path('admin_propriete_new')}}" class="btn btn-primary btn-sm">Nouvelle
                                 propriété</a></li>
                     </ol>
                 </div>
@@ -91,19 +91,19 @@
                                 {% endif %}
                             </td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="{{path('show', {id: propriete.id})}}">
+                                <a class="btn btn-primary btn-sm" href="{{path('admin_propriete_show', {id: propriete.id})}}">
                                     <i class="fas fa-eye">
                                     </i>
                                     Voir
                                 </a>
                                 {% if propriete.vendu == 0 %}
-                                <a class="btn btn-info btn-sm" href="{{path('edit', {id: propriete.id})}}">
+                                <a class="btn btn-info btn-sm" href="{{path('admin_propriete_edit', {id: propriete.id})}}">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Editer
                                 </a>
                                 {% endif %}
-                                <a class="btn btn-danger btn-sm" href="{{path('delete',{id:propriete.id})}}">
+                                <a class="btn btn-danger btn-sm" href="{{path('admin_propriete_delete',{id:propriete.id})}}">
                                     <i class="fas fa-trash">
                                     </i>
                                     Supp
