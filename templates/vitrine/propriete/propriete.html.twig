@@ -2,8 +2,8 @@
 
 {% block body %}
 <div class="bg-light rounded">
-    <h4>Ajouter un filtre : </h4>
-    <div class="container">
+    <div class="container pb-4 pt-4">
+        <h4>Ajouter un filtre : </h4>
         {{form_start(form)}}
         <div class="form-group">
             <div class="row  mb-3">
@@ -16,9 +16,8 @@
     </div>
 </div>
 
-<h1 class="h1">Tout nos biens</h1>
-
 <div class="container">
+    <h1 class="h1">Tout nos biens</h1>
     <div class="row flex">
         {% for propriete in proprietes %}
             {% include "vitrine/base/include/_propriete.html.twig" %}

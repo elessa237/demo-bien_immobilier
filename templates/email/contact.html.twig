@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr" class="translated-ltr">
+
+<body>
+    {% block body %}
+        <div class="card card-primary card-outline">
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+                <div class="mailbox-read-info">
+                    <h5>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">{{contact.propriete.titre}}</font>
+                        </font>
+                    </h5>
+                    <h6>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">De : {{contact.email}}
+                            </font>
+                        </font>
+                    </h6>
+                </div>
+                <!-- /.mailbox-read-info -->
+                
+                <!-- /.mailbox-controls -->
+                <div class="mailbox-read-message">
+                    <p>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">Agence LoremIpsum</font>
+                        </font>
+                    </p>
+        
+                    <p>
+                        {{contact.message|nl2br}}
+                    </p>
+                </div>
+                <!-- /.mailbox-read-message -->
+            </div>
+            {#<div class="card-footer bg-white">
+                <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
+                    <li>
+                        <span class="mailbox-attachment-icon has-img"><img src="{{ vich_uploader_asset(contact.propriete, 'imageFile') | imagine_filter('thumb') }}" alt="{{contact.propriete.titre}}"></span>
+            
+                        <div class="mailbox-attachment-info">
+                            <a href="#" class="mailbox-attachment-name"><i class="fas fa-camera"></i>
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;"> {{contact.propriete.image}}</font>
+                                </font>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>#}
+        </div>
+    {% endblock %}
+</body>
+
+</html>

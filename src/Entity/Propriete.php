@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use DateTime;
 use App\Entity\Options;
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,7 +12,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\File\File as FileFile;
 
 /**
  * @ORM\Entity(repositoryClass=ProprieteRepository::class)
