@@ -1,4 +1,4 @@
-import './styles/admin.scss';
+import './styles/admin.css';
 import 'bootstrap/dist/js/bootstrap'
 import './adminJs/adminlte.min';
 import './adminJs/demo';

@@ -11,9 +11,15 @@
                         <div class="col-12 col-sm-6">
                             <h3 class="d-inline-block d-sm-none">{{propriete.titre}}</h3>
                             <div class="col-12">
-                                <img src="../../dist/img/prod-1.jpg" class="product-image" alt="Product Image">
+                                {% if propriete.image %}
+                                <img src="{{ vich_uploader_asset(propriete, 'imageFile') | imagine_filter('medium')}}" class="product-image"
+                                    style="width: 100%; height:auto;">
+                                {% else %}
+                                <img src="{{ 'images/propriete/default.jpg' | imagine_filter('medium')}}" class="product-image"
+                                    style="width: 100%; height:auto;">
+                                {% endif %}
                             </div>
-                            <div class="col-12 product-image-thumbs">
+                            <!-- <div class="col-12 product-image-thumbs">
                                 <div class="product-image-thumb active"><img src="../../dist/img/prod-1.jpg"
                                         alt="Product Image"></div>
                                 <div class="product-image-thumb"><img src="../../dist/img/prod-2.jpg"
@@ -24,7 +30,7 @@
                                         alt="Product Image"></div>
                                 <div class="product-image-thumb"><img src="../../dist/img/prod-5.jpg"
                                         alt="Product Image"></div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-12 col-sm-6">
                             <h3 class="my-3">{{propriete.titre}}</h3>
@@ -54,7 +60,7 @@
                                             </tr>
                                             <tr>
                                                 <td>chauffage</td>
-                                                <td>{{propriete.chauffage}}</td>
+                                                <td>{% if propriete.chauffage == 0 %}Oui{% else %}Non{% endif %}</td>
                                             </tr>
                                         </table>
                                     </div>

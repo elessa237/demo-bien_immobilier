@@ -53,7 +53,10 @@ class AdminProprieteController extends AbstractController
             $propriete->setCreatedAt(new \DateTime());
             $entityManager->persist($propriete);
             $entityManager->flush();
-
+            $this->addFlash(
+                'success',
+                'vous venez d\'ajouter une nouvelle propriete'
+            );
             return $this->redirectToRoute('admin_propriete', ['id' => $propriete->getId()]);
         }
 
@@ -90,8 +93,11 @@ class AdminProprieteController extends AbstractController
                 $cacheManager->remove($helper->asset($propriete, 'imageFile'));
             }
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('admin_propriete_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash(
+                'success',
+                'propriete modifié avec success'
+            );
+            return $this->redirectToRoute('admin_propriete', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('backoffice/admin_propriete/edit.html.twig', [
@@ -115,7 +121,14 @@ class AdminProprieteController extends AbstractController
             $entityManager->remove($propriete);
             $entityManager->flush();
         }
-
+        $this->addFlash(
+           'alert',
+           'vous venez de supprimer un bien'
+        );
+        $this->addFlash(
+            'success',
+            'vous venez d\'ajouter une nouvelle propriete'
+        );
         return $this->redirectToRoute('admin_propriete',);
     }
 }

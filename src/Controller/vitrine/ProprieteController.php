@@ -71,10 +71,10 @@ class ProprieteController extends AbstractController
                 'success',
                 'Votre message a été envoyer avec success'
             );
-            // return $this->redirectToRoute('propriete_show', [
-            //     'id' => $propriete->getId(),
-            //     'slug' => $propriete->getSlug(),
-            // ]);
+            return $this->redirectToRoute('propriete_show', [
+                'id' => $propriete->getId(),
+                'slug' => $propriete->getSlug(),
+            ]);
         }
 
         return $this->render('vitrine/propriete/show.html.twig', [
