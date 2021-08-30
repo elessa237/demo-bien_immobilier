@@ -125,10 +125,6 @@ class AdminProprieteController extends AbstractController
            'alert',
            'vous venez de supprimer un bien'
         );
-        $this->addFlash(
-            'success',
-            'vous venez d\'ajouter une nouvelle propriete'
-        );
         return $this->redirectToRoute('admin_propriete',);
     }
 }

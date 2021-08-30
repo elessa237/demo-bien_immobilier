@@ -1,0 +1,21 @@
+{% extends "vitrine/base/base.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="error-page">
+            <h1 class="headline text-warning text-center"> 404</h1>
+        
+            <div class="error-content text-center">
+                <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! La page n'a pas été trouver.</h3>
+        
+                <p>
+                    Nous n'avons pas pu trouver la page que vous recherchiez. Pendant ce temps, vous pouvez <a
+                        href="{{path('home')}}">revenir à l'acceuil</a>
+                </p>
+            </div>
+            <!-- /.error-content -->
+        </div>
+    </div>
+    
+{% endblock %}

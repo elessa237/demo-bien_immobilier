@@ -1,4 +1,4 @@
-import './styles/admin.css';
+import './styles/admin.scss';
 import './adminJs/adminlte.min';
 import './adminJs/demo';
 import './adminJs/jquery.overlayScrollbars.min';
